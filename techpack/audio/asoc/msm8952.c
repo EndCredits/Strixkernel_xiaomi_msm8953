@@ -73,7 +73,7 @@ static int msm8952_mclk_event(struct snd_soc_dapm_widget *w,
 static int msm8952_wsa_switch_event(struct snd_soc_dapm_widget *w,
 			      struct snd_kcontrol *kcontrol, int event);
 
-#ifdef ((CONFIG_MACH_XIAOMI_TISSOT) || (CONFIG_MACH_XIAOMI_TIFFANY))
+#if (defined CONFIG_MACH_XIAOMI_TISSOT) || (defined CONFIG_MACH_XIAOMI_TIFFANY)
 int ext_pa_gpio = 0;
 int ext_pa_status = 0;
 #endif
@@ -86,7 +86,7 @@ int ext_pa_status = 0;
 static struct wcd_mbhc_config mbhc_cfg = {
 	.read_fw_bin = false,
 	.calibration = NULL,
-#ifdef ((CONFIG_MACH_XIAOMI_TISSOT) || (CONFIG_MACH_XIAOMI_TIFFANY))
+#if (defined CONFIG_MACH_XIAOMI_TISSOT) || (defined CONFIG_MACH_XIAOMI_TIFFANY)
 	.detect_extn_cable = false,
 #else
 	.detect_extn_cable = true,
@@ -340,7 +340,7 @@ int is_ext_spk_gpio_support(struct platform_device *pdev,
 				__func__, pdata->spk_ext_pa_gpio);
 			return -EINVAL;
 		}
-#ifdef ((CONFIG_MACH_XIAOMI_TISSOT) || (CONFIG_MACH_XIAOMI_TIFFANY))
+#if (defined CONFIG_MACH_XIAOMI_TISSOT) || (defined CONFIG_MACH_XIAOMI_TIFFANY)
 		ext_pa_gpio = pdata->spk_ext_pa_gpio;
 #endif
 	}
@@ -367,7 +367,7 @@ static int enable_spk_ext_pa(struct snd_soc_codec *codec, int enable)
 		return false;
 	}
 
-#ifdef ((CONFIG_MACH_XIAOMI_TISSOT) || (CONFIG_MACH_XIAOMI_TIFFANY))
+#if (defined CONFIG_MACH_XIAOMI_TISSOT) || (defined CONFIG_MACH_XIAOMI_TIFFANY)
 	ext_pa_status = enable;
 #endif
 
@@ -1597,7 +1597,7 @@ static void *def_msm8952_wcd_mbhc_cal(void)
 	btn_low[4] = 438;
 	btn_high[4] = 438;
 #else
-#ifdef ((CONFIG_MACH_XIAOMI_TISSOT) || (CONFIG_MACH_XIAOMI_TIFFANY))
+#if (defined CONFIG_MACH_XIAOMI_TISSOT) || (defined CONFIG_MACH_XIAOMI_TIFFANY)
 	btn_low[0] = 91;
 	btn_high[0] = 91;
 	btn_low[1] = 259;
