@@ -127,6 +127,8 @@ $(obj)/configs.o: $(obj)/config_data.h
 targets += config_data.gz
 ifeq ($(CONFIG_MACH_XIAOMI_TISSOT),y)
 $(obj)/config_data.gz: arch/arm64/configs/tissot_defconfig FORCE
+ifeq ($(CONFIG_MACH_XIAOMI_TIFFANY),y)
+$(obj)/config_data.gz: arch/arm64/configs/tiffany_defconfig FORCE
 else
 $(obj)/config_data.gz: $(KCONFIG_CONFIG) FORCE
 endif
